@@ -1,12 +1,27 @@
 <template>
     <div id="app">
-        <div id="nav">
-            <router-link to="/">Home</router-link> |
-            <router-link to="/about">About</router-link>
-        </div>
+        <NavView />
         <router-view />
     </div>
 </template>
+
+<script lang="ts">
+import { Component, Vue, Watch } from 'vue-property-decorator';
+import { Route } from 'vue-router';
+import NavView from './components/Nav.vue';
+
+@Component({
+    components: {
+        NavView,
+    },
+})
+export default class App extends Vue {
+    @Watch('$route', { immediate: true, deep: true })
+    onRouteChange(newVal: Route) {
+        document.title = newVal.meta.title || 'Vue Shop';
+    }
+}
+</script>
 
 <style lang="less">
 #app {
@@ -15,18 +30,5 @@
     -moz-osx-font-smoothing: grayscale;
     text-align: center;
     color: #2c3e50;
-}
-
-#nav {
-    padding: 30px;
-
-    a {
-        font-weight: bold;
-        color: #2c3e50;
-
-        &.router-link-exact-active {
-            color: #42b983;
-        }
-    }
 }
 </style>
