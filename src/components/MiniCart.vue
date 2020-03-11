@@ -1,11 +1,11 @@
 <template>
-    <div id="shopping-cart">
+    <div id="mini-cart" @click="goCart" v-show="show">
         <div>
-            <icon-font iconClass="Shoppingcartfinancebusiness" />
+            <IconFont iconClass="Shoppingcartfinancebusiness" />
             <span>{{ carts.num }}</span>
         </div>
         <div>
-            <icon-font iconClass="money" />
+            <IconFont iconClass="money" />
             <span>{{ carts.count }}</span>
         </div>
     </div>
@@ -13,26 +13,30 @@
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
-import { ShoppingCart } from '@/types/index';
+import _ from '@/utils/index';
 
 @Component
-export default class CartView extends Vue {
+export default class MiniCartView extends Vue {
     get carts() {
         const c = this.$store.state.shoppingCarts;
         return {
             num: c.length,
-            count: this.caculate(c),
+            count: _.calculate(c),
         };
     }
 
-    private caculate(carts: ShoppingCart[]) {
-        return carts.reduce((sum, c) => sum + c.product.price * c.number, 0);
+    get show() {
+        return this.$route.name !== 'ShoppingCart';
+    }
+
+    goCart() {
+        return this.$router.push('/shoppingcart');
     }
 }
 </script>
 
 <style lang="less" scoped>
-#shopping-cart {
+#mini-cart {
     width: 10%;
     display: flex;
     flex-flow: row nowrap;
@@ -40,8 +44,14 @@ export default class CartView extends Vue {
     align-items: center;
 }
 
-#shopping-cart div,
-#shopping-cart span {
+#mini-cart div,
+#mini-cart span {
     padding: 5px;
+}
+
+#mini-cart:hover {
+    cursor: pointer;
+    color: white;
+    background-color: cadetblue;
 }
 </style>

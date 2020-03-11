@@ -9,7 +9,7 @@
                 ><a>{{ menu.title }}</a></router-link
             >
         </ul>
-        <CartView />
+        <MiniCartView />
     </div>
 </template>
 
@@ -17,11 +17,11 @@
 import { Component, Vue } from 'vue-property-decorator';
 import { State } from 'vuex-class';
 import { NavMenu } from '@/types/index';
-import CartView from './Cart.vue';
+import MiniCartView from './MiniCart.vue';
 
 @Component({
     components: {
-        CartView,
+        MiniCartView,
     },
 })
 export default class NavView extends Vue {
@@ -46,6 +46,7 @@ export default class NavView extends Vue {
     margin: 0;
     padding: 0;
     list-style: none;
+    text-align: center;
 }
 
 .list li {

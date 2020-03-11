@@ -1,7 +1,7 @@
 <template>
     <div id="app">
         <NavView />
-        <router-view />
+        <router-view class="wrap" />
     </div>
 </template>
 
@@ -28,7 +28,11 @@ export default class App extends Vue {
     font-family: Avenir, Helvetica, Arial, sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    text-align: center;
+}
+
+.wrap {
     color: #2c3e50;
+    background-color: aliceblue;
+    padding: 30px 30px;
 }
 </style>

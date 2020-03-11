@@ -1,6 +1,6 @@
-import { State, Product, ShoppingCart } from '@/types/index';
+import { State, Product } from '@/types/index';
 
-const product: Product = {
+const product1: Product = {
     id: 1,
     name: 'Apple',
     detail: 'This is an apple',
@@ -8,9 +8,12 @@ const product: Product = {
     price: 3.11,
 };
 
-const cart: ShoppingCart = {
-    product: product,
-    number: 3,
+const product2: Product = {
+    id: 2,
+    name: 'Banana',
+    detail: 'This is a banana',
+    stock: 56,
+    price: 2.19,
 };
 
 const state: State = {
@@ -21,25 +24,30 @@ const state: State = {
             children: [],
         },
         {
-            title: 'Product 1',
-            path: '/product/1',
+            title: 'Products',
+            path: '/products',
             children: [],
         },
         {
-            title: 'Product 2',
-            path: '/product/2',
-            children: [],
+            title: 'ShoppingCart',
+            path: '/shoppingcart',
         },
         {
             title: 'About',
             path: '/about',
         },
     ],
-    products: [],
-    shoppingCarts: [],
+    products: [product1, product2],
+    shoppingCarts: [
+        {
+            product: product1,
+            number: 3,
+        },
+        {
+            product: product2,
+            number: 4,
+        },
+    ],
 };
-
-state.products.push(product);
-state.shoppingCarts.push(cart);
 
 export default state;
