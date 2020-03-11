@@ -30,10 +30,10 @@ export default class NavView extends Vue {
 }
 </script>
 
-<style scoped lang="less">
+<style lang="less" scoped>
 #nav {
     display: flex;
-    background-color: aliceblue;
+    background-color: @backColor;
     flex-flow: row nowrap;
     justify-content: space-between;
     margin-bottom: 20px;
@@ -58,16 +58,16 @@ export default class NavView extends Vue {
 
 .list a {
     display: block;
-    font-size: 20px;
+    font-size: @normalFont;
     font-weight: bold;
     padding: 10px 10px;
-    color: white;
-    background-color: cadetblue;
+    color: @menuFontColor;
+    background-color: @menuColor;
     text-decoration: none;
 }
 
 .list a:hover,
 .router-link-exact-active a {
-    background-color: aquamarine;
+    background-color: @menuHoverColor;
 }
 </style>

@@ -31,8 +31,8 @@ export default class App extends Vue {
 }
 
 .wrap {
-    color: #2c3e50;
-    background-color: aliceblue;
+    color: @fontColor;
+    background-color: @backColor;
     padding: 30px 30px;
 }
 </style>

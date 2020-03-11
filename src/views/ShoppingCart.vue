@@ -115,7 +115,7 @@ export default class ShoppingCartView extends Vue {
 }
 
 .cell {
-    font-size: 20px;
+    font-size: @normalFont;
     width: 20%;
     height: 50px;
 }
@@ -129,12 +129,12 @@ export default class ShoppingCartView extends Vue {
 }
 
 input {
-    font-size: 20px;
+    font-size: @normalFont;
     width: 50px;
     text-align: center;
 }
 
 button {
-    font-size: 20px;
+    font-size: @normalFont;
 }
 </style>

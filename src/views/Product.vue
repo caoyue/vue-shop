@@ -96,7 +96,7 @@ export default class ProductView extends Vue {
 button,
 input,
 p {
-    font-size: 20px;
+    font-size: @normalFont;
 }
 
 input {

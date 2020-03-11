@@ -51,7 +51,7 @@ export default class MiniCartView extends Vue {
 
 #mini-cart:hover {
     cursor: pointer;
-    color: white;
-    background-color: cadetblue;
+    color: @menuFontColor;
+    background-color: @menuColor;
 }
 </style>

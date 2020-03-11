@@ -27,10 +27,10 @@ export default class ProductListView extends Vue {
 <style lang="less" scoped>
 ul {
     list-style: none;
-    font-size: 20px;
+    font-size: @normalFont;
 }
 
 li {
-    line-height: 30px;
+    line-height: @lineHeight;
 }
 </style>
