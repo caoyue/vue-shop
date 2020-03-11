@@ -6,8 +6,9 @@
                 v-for="menu in navMenu"
                 :key="menu.title"
                 :to="menu.path"
-                ><a>{{ menu.title }}</a></router-link
             >
+                <a>{{ menu.title }}</a>
+            </router-link>
         </ul>
         <MiniCartView />
     </div>

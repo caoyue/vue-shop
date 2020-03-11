@@ -1,11 +1,11 @@
 <template>
     <div>
-        <ul>
+        <ul class="list">
             <router-link
                 tag="li"
                 v-for="p in products"
                 :key="p.id"
-                :to="{ name: 'Product', params: { id: p.id } }"
+                :to="{ name: 'Product', params: { id: p.id.toString() } }"
             >
                 <a>{{ p.name }}</a>
             </router-link>
@@ -23,3 +23,14 @@ export default class ProductListView extends Vue {
     @State products!: Product[];
 }
 </script>
+
+<style lang="less" scoped>
+ul {
+    list-style: none;
+    font-size: 20px;
+}
+
+li {
+    line-height: 30px;
+}
+</style>

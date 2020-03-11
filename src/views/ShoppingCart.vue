@@ -28,7 +28,9 @@
             </div>
         </div>
         <div v-if="!empty" class="row count">
-            <div class="cell center">Total: {{ count }}</div>
+            <div class="cell center">
+                <IconFont iconClass="money" /> {{ count }}
+            </div>
             <div class="cell center">
                 <button @click="checkout">Checkout</button>
             </div>

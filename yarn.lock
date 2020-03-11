@@ -8701,13 +8701,6 @@ vue-hot-reload-api@^2.3.0:
   resolved "https://registry.npm.taobao.org/vue-hot-reload-api/download/vue-hot-reload-api-2.3.4.tgz?cache=0&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fvue-hot-reload-api%2Fdownload%2Fvue-hot-reload-api-2.3.4.tgz#532955cc1eb208a3d990b3a9f9a70574657e08f2"
   integrity sha1-UylVzB6yCKPZkLOp+acFdGV+CPI=
 
-vue-iconfont@^2.5.1:
-  version "2.5.1"
-  resolved "https://registry.yarnpkg.com/vue-iconfont/-/vue-iconfont-2.5.1.tgz#e64333810b52348b4c47a8619854777c5ee2234a"
-  integrity sha512-PZOGuXeoCy+d2rECG4HYXMaRZo1ds2zffvdJTSj3XBb1aUqF30rWckUFp7y8KRR88Ovm+uxDY3lvSsu1CVMieA==
-  dependencies:
-    vue-merge-data "^0.2.1"
-
 vue-loader@^15.8.3:
   version "15.9.0"
   resolved "https://registry.npm.taobao.org/vue-loader/download/vue-loader-15.9.0.tgz?cache=0&sync_timestamp=1581493588582&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fvue-loader%2Fdownload%2Fvue-loader-15.9.0.tgz#5d4b0378a4606188fc83e587ed23c94bc3a10998"
@@ -8718,11 +8711,6 @@ vue-loader@^15.8.3:
     loader-utils "^1.1.0"
     vue-hot-reload-api "^2.3.0"
     vue-style-loader "^4.1.0"
-
-vue-merge-data@^0.2.1:
-  version "0.2.1"
-  resolved "https://registry.yarnpkg.com/vue-merge-data/-/vue-merge-data-0.2.1.tgz#e655e190cd488ca946c05051192a4bf4ea440972"
-  integrity sha512-AmNPQ/e+R2j2S6qi2fu5UZqYmdY7gRN9sFgpPyliNm3N5+1f2tNASaNCOafewlWygFqg5Pp6qH8gzXNnMjFuXQ==
 
 vue-property-decorator@^8.3.0:
   version "8.4.0"
