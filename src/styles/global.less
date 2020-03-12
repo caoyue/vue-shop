@@ -1,0 +1,18 @@
+@import './_variables.less';
+
+input {
+    color: @fontColor;
+}
+
+button {
+    color: @menuFontColor;
+    background-color: @menuColor;
+    border: none;
+    padding: 3px 10px;
+    cursor: pointer;
+}
+button:disabled {
+    color: @menuFontColor;
+    background-color: gray;
+    cursor: not-allowed;
+}
