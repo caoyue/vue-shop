@@ -1,6 +1,14 @@
 import { State, ShoppingCart, Product } from '@/types/index';
 
 export default {
+    /* product */
+    setProducts(state: State, products: Product[]) {
+        state.products = products;
+    },
+    setProduct(state: State, product: Product) {
+        state.product = product;
+    },
+    /* shopping cart */
     productChange(state: State, payload: { productId: number; num: number }) {
         const p = state.shoppingCarts.find(
             s => s.product.id === payload.productId,

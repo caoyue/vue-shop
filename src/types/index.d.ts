@@ -19,6 +19,7 @@ export interface ShoppingCart {
 
 export interface State {
     navMenu: NavMenu[];
+    product: Product;
     products: Product[];
     shoppingCarts: ShoppingCart[];
 }

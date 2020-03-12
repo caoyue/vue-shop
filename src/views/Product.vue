@@ -21,25 +21,22 @@
 
 <script lang="ts">
 import Vue from 'vue';
-import { State, Mutation } from 'vuex-class';
+import { State, Mutation, Action } from 'vuex-class';
 import { Product } from '@/types/index';
 import { Component, Watch } from 'vue-property-decorator';
 import { Route } from 'vue-router';
 
 @Component
 export default class ProductView extends Vue {
-    @State products!: Product[];
+    @State product!: Product;
+
     @Mutation addToCart!: (payload: {
         product: Product;
         number: number;
     }) => void;
+    @Action getProductById!: (data: { id: number }) => void;
 
     private num = 1;
-    private product = {} as Product;
-
-    created() {
-        this.load(this.$route.params.id);
-    }
 
     private changeNum(n: number) {
         this.num += n;
@@ -72,22 +69,17 @@ export default class ProductView extends Vue {
     }
 
     @Watch('$route', { immediate: true, deep: true })
-    private onRouteChange(newVal: Route) {
+    private onProductRouteChange(newVal: Route) {
         this.load(newVal.params.id);
     }
 
     private load(idStr: string) {
-        const p = this.getProduct(idStr);
-        if (p) {
-            document.title = p.name;
-            this.product = p;
+        this.getProductById({ id: parseInt(idStr) });
+        if (this.product) {
+            document.title = this.product.name;
         } else {
             return this.$router.push('/404');
         }
-    }
-
-    private getProduct(idStr: string) {
-        return this.products.find(p => p.id.toString() === idStr);
     }
 }
 </script>

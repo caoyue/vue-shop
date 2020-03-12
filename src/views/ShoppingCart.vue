@@ -9,7 +9,15 @@
             <div class="cell center"></div>
         </div>
         <div class="row" v-for="s in shoppingCarts" :key="s.product.id">
-            <div class="cell center">{{ s.product.name }}</div>
+            <div class="cell center">
+                <router-link
+                    :to="{
+                        name: 'Product',
+                        params: { id: s.product.id.toString() },
+                    }"
+                    ><a>{{ s.product.name }}</a>
+                </router-link>
+            </div>
             <div class="cell center">{{ s.product.price }}</div>
             <div class="cell center">
                 <button :disabled="deceaseDisabled(s)" @click="decrease(s)">

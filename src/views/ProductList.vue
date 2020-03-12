@@ -15,12 +15,17 @@
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
-import { State } from 'vuex-class';
+import { State, Action } from 'vuex-class';
 import { Product } from '@/types/index';
 
 @Component
 export default class ProductListView extends Vue {
     @State products!: Product[];
+    @Action loadProducts!: (data: { page: number }) => void;
+
+    mounted() {
+        this.loadProducts({ page: 1 });
+    }
 }
 </script>
 
