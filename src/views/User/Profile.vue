@@ -1,10 +1,12 @@
 <template>
     <div class="profile">
-        <h1>User Profile</h1>
-        <p>{{ user.username }}</p>
-        <router-link :to="{ path: '/logout' }">
-            <a>Logout</a>
-        </router-link>
+        <h2>UserName: {{ user.username }}</h2>
+        <p>This is a profile page.</p>
+        <p>
+            <router-link :to="{ path: '/logout' }">
+                Logout
+            </router-link>
+        </p>
     </div>
 </template>
 
@@ -18,3 +20,10 @@ export default class ProfileView extends Vue {
     @State user!: User;
 }
 </script>
+
+<style lang="less" scoped>
+.profile p {
+    font-size: @bigFont;
+    padding: 50px 0px;
+}
+</style>

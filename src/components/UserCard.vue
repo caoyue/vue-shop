@@ -1,7 +1,7 @@
 <template>
     <div class="user" v-if="user.username" @click="goProfile">
         <div>
-            <IconFont iconClass="money" />
+            <IconFont iconClass="zhanghao" />
             <span>{{ user.username }}</span>
         </div>
     </div>
@@ -42,5 +42,9 @@ export default class UserCardView extends Vue {
     cursor: pointer;
     color: @menuFontColor;
     background-color: @menuColor;
+}
+
+.user span {
+    padding: 0 10px;
 }
 </style>

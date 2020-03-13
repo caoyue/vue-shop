@@ -1,5 +1,9 @@
 <template>
     <div class="login">
+        <p class="errors" v-if="error">
+            <IconFont iconClass="error-" />
+            {{ error }}
+        </p>
         <div class="row">
             <label for="username">Username</label>
             <input type="text" name="username" v-model="username" />
@@ -19,18 +23,35 @@
 
 <script lang="ts">
 import { Vue, Component } from 'vue-property-decorator';
-import { Mutation } from 'vuex-class';
+import { Mutation, State } from 'vuex-class';
+import { User } from '@/types';
 
 @Component
 export default class LoginView extends Vue {
+    @State user!: User;
     @Mutation login!: (username: string) => void;
 
     private username = '';
     private password = '';
+    private error = '';
+
+    private created() {
+        if (this.user.username) {
+            this.$router.push('/user');
+        }
+    }
 
     private onLogin() {
-        this.login(this.username);
-        this.$router.push('/user');
+        if (this.validate()) {
+            this.login(this.username);
+            this.$router.push('/user');
+        } else {
+            this.error = 'Not valid.';
+        }
+    }
+
+    private validate() {
+        return this.username && this.password;
     }
 }
 </script>
@@ -48,6 +69,7 @@ export default class LoginView extends Vue {
 .row input {
     font-size: inherit;
     text-align: left;
+    padding: 10px 10px;
 }
 
 .row button {
@@ -57,5 +79,10 @@ export default class LoginView extends Vue {
 
 .reg {
     margin-left: 30px;
+}
+
+.errors {
+    font-size: @bigFont;
+    color: @errorColor;
 }
 </style>
