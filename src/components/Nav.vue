@@ -36,14 +36,14 @@ export default class NavView extends Vue {
     background-color: @backColor;
     flex-flow: row nowrap;
     justify-content: space-between;
-    margin-bottom: 20px;
+    margin-bottom: 5px;
 }
 
 .list {
     display: flex;
     flex-flow: row nowrap;
     justify-content: flex-start;
-    width: 80%;
+    flex: 2;
     margin: 0;
     padding: 0;
     list-style: none;
@@ -51,7 +51,8 @@ export default class NavView extends Vue {
 }
 
 .list li {
-    width: 15%;
+    min-width: 150px;
+    max-width: 300px;
     margin: 0;
     padding: 0;
 }

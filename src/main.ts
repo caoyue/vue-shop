@@ -18,8 +18,10 @@ import IconFont from '@/components/IconFont.vue';
 Vue.component('IconFont', IconFont);
 
 // use nprogress
+import { State } from '@/types/index';
 import NProgress from 'nprogress';
 import 'nprogress/nprogress.css';
+
 NProgress.configure({
     easing: 'ease',
     speed: 500,
@@ -28,14 +30,14 @@ NProgress.configure({
     minimum: 0.3,
 });
 
-router.beforeEach((to, from, next) => {
-    NProgress.start();
-    next();
-});
-
-router.afterEach(() => {
-    NProgress.done();
-});
+store.watch(
+    (state: State) => state.loading,
+    (newVal: number, oldVal: number) => {
+        if (newVal === 0) return NProgress.done();
+        if (oldVal === 0) return NProgress.start();
+        NProgress.set(1.8 / Math.max(oldVal, newVal));
+    },
+);
 
 Vue.config.productionTip = false;
 

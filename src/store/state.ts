@@ -1,6 +1,8 @@
 import { State } from '@/types/index';
 
 const state: State = {
+    loading: 0,
+    message: '',
     navMenu: [
         {
             title: 'Home',

@@ -18,6 +18,8 @@ export interface ShoppingCart {
 }
 
 export interface State {
+    loading: number;
+    message: string;
     navMenu: NavMenu[];
     product: Product;
     products: Product[];

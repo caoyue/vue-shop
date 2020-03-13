@@ -139,7 +139,6 @@ export default class ShoppingCartView extends Vue {
 input {
     font-size: @normalFont;
     width: 50px;
-    text-align: center;
 }
 
 button {

@@ -1,7 +1,40 @@
 @import './_variables.less';
 
+body,
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+dl,
+dd,
+ul,
+ol {
+    margin: 0;
+    padding: 0;
+}
+
+a,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+input,
+select,
+button,
+textarea {
+    font-family: inherit;
+    font-style: inherit;
+    color: inherit;
+    outline: none;
+}
+
 input {
-    color: @fontColor;
+    text-align: center;
 }
 
 button {
@@ -10,6 +43,7 @@ button {
     border: none;
     padding: 3px 10px;
     cursor: pointer;
+    text-align: center;
 }
 button:disabled {
     color: @menuFontColor;

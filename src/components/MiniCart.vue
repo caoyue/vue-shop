@@ -37,11 +37,11 @@ export default class MiniCartView extends Vue {
 
 <style lang="less" scoped>
 #mini-cart {
-    width: 10%;
     display: flex;
     flex-flow: row nowrap;
     justify-content: center;
     align-items: center;
+    width: 150px;
 }
 
 #mini-cart div,

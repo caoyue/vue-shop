@@ -1,6 +1,16 @@
 import { State, ShoppingCart, Product } from '@/types/index';
 
 export default {
+    /* alert message */
+    alertMessage(state: State, message: string) {
+        state.message = message;
+    },
+    startLoading(state: State) {
+        state.loading++;
+    },
+    finishLoading(state: State) {
+        state.loading--;
+    },
     /* product */
     setProducts(state: State, products: Product[]) {
         state.products = products;

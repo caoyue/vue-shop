@@ -1,7 +1,7 @@
 <template>
     <div class="home">
-        <img alt="Vue logo" src="../assets/logo.png" />
         <Index msg="Welcome to vue shop!" />
+        <img alt="Vue logo" src="../assets/logo.png" />
     </div>
 </template>
 

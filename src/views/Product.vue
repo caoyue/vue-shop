@@ -93,7 +93,6 @@ p {
 
 input {
     width: 50px;
-    text-align: center;
 }
 
 .add {
