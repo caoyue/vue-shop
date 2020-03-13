@@ -11,6 +11,7 @@
             </router-link>
         </ul>
         <MiniCartView />
+        <UserCardView />
     </div>
 </template>
 
@@ -19,10 +20,12 @@ import { Component, Vue } from 'vue-property-decorator';
 import { State } from 'vuex-class';
 import { NavMenu } from '@/types/index';
 import MiniCartView from './MiniCart.vue';
+import UserCardView from './UserCard.vue';
 
 @Component({
     components: {
         MiniCartView,
+        UserCardView,
     },
 })
 export default class NavView extends Vue {
@@ -52,16 +55,14 @@ export default class NavView extends Vue {
 
 .list li {
     min-width: 150px;
-    max-width: 300px;
-    margin: 0;
-    padding: 0;
+    max-width: 400px;
 }
 
 .list a {
     display: block;
     font-size: @normalFont;
     font-weight: bold;
-    padding: 10px 10px;
+    padding: 10px 30px;
     color: @menuFontColor;
     background-color: @menuColor;
     text-decoration: none;

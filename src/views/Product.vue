@@ -91,6 +91,12 @@ p {
     font-size: @normalFont;
 }
 
+p,
+h1,
+.cart {
+    padding: 10px 10px;
+}
+
 input {
     width: 50px;
 }

@@ -39,6 +39,14 @@ store.watch(
     },
 );
 
+// user login
+router.beforeEach((to, from, next) => {
+    if (to.meta.needLogin && !store.state.user.username) {
+        router.push('/login');
+    }
+    next();
+});
+
 Vue.config.productionTip = false;
 
 new Vue({

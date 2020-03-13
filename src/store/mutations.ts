@@ -1,6 +1,16 @@
 import { State, ShoppingCart, Product } from '@/types/index';
 
 export default {
+    /* login/register */
+    register(state: State, payload: { username: string; password: string }) {
+        state.user.username = payload.username;
+    },
+    login(state: State, username: string) {
+        state.user.username = username;
+    },
+    logout(state: State) {
+        state.user.username = '';
+    },
     /* alert message */
     alertMessage(state: State, message: string) {
         state.message = message;

@@ -1,3 +1,7 @@
+export interface User {
+    username: string;
+}
+
 export interface NavMenu {
     title: string;
     path: string;
@@ -18,6 +22,7 @@ export interface ShoppingCart {
 }
 
 export interface State {
+    user: User;
     loading: number;
     message: string;
     navMenu: NavMenu[];

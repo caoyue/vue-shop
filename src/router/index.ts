@@ -14,6 +14,40 @@ const routes = [
         },
     },
     {
+        path: '/register',
+        name: 'Register',
+        component: () => import('../views/User/Register.vue'),
+        meta: {
+            title: 'Register',
+        },
+    },
+    {
+        path: '/login',
+        name: 'Login',
+        component: () => import('../views/User/Login.vue'),
+        meta: {
+            title: 'Login',
+        },
+    },
+    {
+        path: '/logout',
+        name: 'Logout',
+        component: () => import('../views/User/Logout.vue'),
+        meta: {
+            title: 'Logout',
+            needLogin: true,
+        },
+    },
+    {
+        path: '/user',
+        name: 'User',
+        component: () => import('../views/User/Profile.vue'),
+        meta: {
+            title: 'User Profile',
+            needLogin: true,
+        },
+    },
+    {
         path: '/about',
         name: 'About',
         component: () => import('../views/About.vue'),

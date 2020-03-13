@@ -1,6 +1,9 @@
 import { State } from '@/types/index';
 
 const state: State = {
+    user: {
+        username: '',
+    },
     loading: 0,
     message: '',
     navMenu: [
