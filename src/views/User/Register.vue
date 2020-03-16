@@ -31,11 +31,11 @@
 
 <script lang="ts">
 import { Vue, Component } from 'vue-property-decorator';
-import { Mutation } from 'vuex-class';
+import { Action } from 'vuex-class';
 
 @Component
 export default class LoginView extends Vue {
-    @Mutation register!: (payload: {
+    @Action register!: (payload: {
         username: string;
         password: string;
     }) => void;

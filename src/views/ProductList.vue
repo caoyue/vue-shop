@@ -21,7 +21,7 @@ import { Product } from '@/types/index';
 @Component
 export default class ProductListView extends Vue {
     @State products!: Product[];
-    @Action loadProducts!: (data: { page: number }) => void;
+    @Action loadProducts!: (payload: { page: number }) => void;
 
     mounted() {
         this.loadProducts({ page: 1 });

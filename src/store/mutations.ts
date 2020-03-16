@@ -1,16 +1,19 @@
 import { State, ShoppingCart, Product } from '@/types/index';
+import _ from '@/utils';
 
 export default {
-    /* login/register */
-    register(state: State, payload: { username: string; password: string }) {
+    /* user */
+    login(state: State, payload: { username: string; token: string }) {
         state.user.username = payload.username;
-    },
-    login(state: State, username: string) {
-        state.user.username = username;
+        state.user.token = payload.token;
+        _.saveToken(state.user);
     },
     logout(state: State) {
         state.user.username = '';
+        state.user.token = '';
+        _.removeToken();
     },
+
     /* alert message */
     alertMessage(state: State, message: string) {
         state.message = message;
@@ -21,6 +24,7 @@ export default {
     finishLoading(state: State) {
         state.loading--;
     },
+
     /* product */
     setProducts(state: State, products: Product[]) {
         state.products = products;
@@ -28,6 +32,7 @@ export default {
     setProduct(state: State, product: Product) {
         state.product = product;
     },
+
     /* shopping cart */
     productChange(state: State, payload: { productId: number; num: number }) {
         const p = state.shoppingCarts.find(

@@ -4,11 +4,11 @@
 
 <script lang="ts">
 import { Vue, Component } from 'vue-property-decorator';
-import { Mutation } from 'vuex-class';
+import { Action } from 'vuex-class';
 
 @Component
 export default class LogoutView extends Vue {
-    @Mutation logout!: () => void;
+    @Action logout!: () => void;
 
     private created() {
         this.logout();

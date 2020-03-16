@@ -1,9 +1,10 @@
 import { State } from '@/types/index';
+import _ from '@/utils';
+
+const initialUser = _.loadUser();
 
 const state: State = {
-    user: {
-        username: '',
-    },
+    user: initialUser,
     loading: 0,
     message: '',
     navMenu: [

@@ -34,7 +34,7 @@ export default class ProductView extends Vue {
         product: Product;
         number: number;
     }) => void;
-    @Action getProductById!: (data: { id: number }) => void;
+    @Action getProductById!: (payload: { id: number }) => void;
 
     private num = 1;
 
