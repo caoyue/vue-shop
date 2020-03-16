@@ -23,13 +23,17 @@
 
 <script lang="ts">
 import { Vue, Component } from 'vue-property-decorator';
-import { State, Action } from 'vuex-class';
+import { State, Action, Getter } from 'vuex-class';
 import { User } from '@/types';
 
 @Component
 export default class LoginView extends Vue {
     @State user!: User;
-    @Action login!: (payload: { username: string; password: string }) => void;
+    @Getter isAuthenticated!: boolean;
+    @Action login!: (payload: {
+        username: string;
+        password: string;
+    }) => Promise<void>;
 
     private username = '';
     private password = '';
@@ -43,7 +47,15 @@ export default class LoginView extends Vue {
 
     private onLogin() {
         if (this.validate()) {
-            this.login({ username: this.username, password: this.password });
+            this.login({
+                username: this.username,
+                password: this.password,
+            }).then(() => {
+                if (this.isAuthenticated) {
+                    const redirect = this.$route.query.redirect || '/';
+                    this.$router.replace({ path: redirect as string });
+                }
+            });
         } else {
             this.error = 'Not valid.';
         }

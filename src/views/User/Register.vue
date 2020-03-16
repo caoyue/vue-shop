@@ -31,14 +31,16 @@
 
 <script lang="ts">
 import { Vue, Component } from 'vue-property-decorator';
-import { Action } from 'vuex-class';
+import { Action, Getter } from 'vuex-class';
 
 @Component
 export default class LoginView extends Vue {
+    @Getter isAuthenticated!: boolean;
     @Action register!: (payload: {
         username: string;
         password: string;
-    }) => void;
+    }) => Promise<void>;
+
     private username = '';
     private password = '';
     private confirmPassword = '';
@@ -46,8 +48,14 @@ export default class LoginView extends Vue {
 
     private onRegister() {
         if (this.validate()) {
-            this.register({ username: this.username, password: this.password });
-            this.$router.push('/user');
+            this.register({
+                username: this.username,
+                password: this.password,
+            }).then(() => {
+                if (this.isAuthenticated) {
+                    this.$router.replace('/user');
+                }
+            });
         } else {
             this.error = 'Not valid';
         }

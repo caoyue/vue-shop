@@ -1,5 +1,8 @@
 <template>
     <div>
+        <h1 v-if="!products.length">
+            No products.
+        </h1>
         <ul class="list">
             <router-link
                 tag="li"

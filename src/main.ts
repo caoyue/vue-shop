@@ -41,8 +41,14 @@ store.watch(
 
 // user login
 router.beforeEach((to, from, next) => {
-    if (to.meta.needLogin && !store.state.user.username) {
-        router.push('/login');
+    if (to.meta.needLogin && !store.getters.isAuthenticated) {
+        router.push({
+            path: '/login',
+            query: {
+                // redirect to original path after login
+                redirect: to.fullPath,
+            },
+        });
     }
     next();
 });

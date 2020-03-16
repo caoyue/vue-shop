@@ -3,23 +3,12 @@ import store from '@/store';
 import router from '@/router';
 import _ from '@/utils';
 
-const developmentBaseApi = 'https://localhost:5001';
-const productBaseApi = 'https://localhost:5000';
-
-const getBaseUrl = function() {
-    if (process.env.NODE_ENV == 'development') {
-        return developmentBaseApi;
-    } else if (process.env.NODE_ENV == 'production') {
-        return productBaseApi;
-    }
-};
-
 const http = axios.create();
 
 http.interceptors.request.use(
     config => {
         // set BaseUrl
-        config.baseURL = getBaseUrl();
+        config.baseURL = process.env.VUE_APP_BASEAPI;
 
         // if token exists, add to request
         if (store.state.user && store.state.user.token) {

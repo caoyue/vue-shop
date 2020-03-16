@@ -8,11 +8,12 @@ import { Action } from 'vuex-class';
 
 @Component
 export default class LogoutView extends Vue {
-    @Action logout!: () => void;
+    @Action logout!: () => Promise<void>;
 
     private created() {
-        this.logout();
-        this.$router.push('/');
+        this.logout().then(() => {
+            this.$router.replace('/');
+        });
     }
 }
 </script>

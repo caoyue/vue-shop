@@ -2,31 +2,13 @@ import { State } from '@/types/index';
 import _ from '@/utils';
 
 const initialUser = _.loadUser();
+const initialNav = _.loadNav();
 
 const state: State = {
     user: initialUser,
     loading: 0,
     message: '',
-    navMenu: [
-        {
-            title: 'Home',
-            path: '/',
-            children: [],
-        },
-        {
-            title: 'Products',
-            path: '/products',
-            children: [],
-        },
-        {
-            title: 'ShoppingCart',
-            path: '/shoppingcart',
-        },
-        {
-            title: 'About',
-            path: '/about',
-        },
-    ],
+    navMenu: initialNav,
     product: {
         id: 0,
         name: '',

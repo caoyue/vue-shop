@@ -1,6 +1,6 @@
 <template>
     <div class="cart">
-        <h1 v-if="empty">No products here.</h1>
+        <h1 v-if="empty">Empty here.</h1>
         <div v-if="!empty" class="row">
             <div class="cell center">Product</div>
             <div class="cell center">Price</div>

@@ -1,4 +1,5 @@
-import { ShoppingCart, User } from '@/types/index';
+import { ShoppingCart, User, NavMenu } from '@/types/index';
+import routes from './routes';
 
 const tokenName = 'user';
 
@@ -41,6 +42,17 @@ const utils = {
                 token: '',
             };
         }
+    },
+    loadNav(): NavMenu[] {
+        return routes
+            .filter(r => r.meta.show)
+            .map(r => {
+                const nav: NavMenu = {
+                    title: r.meta.title || 'Vue Shop',
+                    path: r.path,
+                };
+                return nav;
+            });
     },
 };
 

@@ -43,4 +43,8 @@ export default class App extends Vue {
     background: linear-gradient(@backColor, @menuFontColor);
     padding: 30px 30px;
 }
+
+#nprogress .bar {
+    background: lighten(@errorColor, 10%) !important;
+}
 </style>

@@ -6,11 +6,13 @@ export default {
     login(state: State, payload: { username: string; token: string }) {
         state.user.username = payload.username;
         state.user.token = payload.token;
+
         _.saveToken(state.user);
     },
     logout(state: State) {
         state.user.username = '';
         state.user.token = '';
+
         _.removeToken();
     },
 

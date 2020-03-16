@@ -1,6 +1,5 @@
 import { ActionTree } from 'vuex';
 import { State, User, Product } from '@/types';
-import router from '@/router';
 import userApi from '@/api/user';
 import productApi from '@/api/product';
 
@@ -20,7 +19,6 @@ const actions: ActionTree<State, State> = {
                 username: res.result.username,
                 token: res.result.token,
             });
-            router.replace('/user');
         } else {
             const error =
                 res && res.code ? `Code ${res.code}` : 'Network Error.';
@@ -38,7 +36,6 @@ const actions: ActionTree<State, State> = {
                 username: res.result.username,
                 token: res.result.token,
             });
-            router.replace('/user');
         } else {
             const error =
                 res && res.code ? `Code ${res.code}` : 'Network Error.';
@@ -48,7 +45,6 @@ const actions: ActionTree<State, State> = {
     async logout({ commit }) {
         await userApi.logout().catch(e => e);
         commit('logout');
-        router.replace('/');
     },
 
     /* product */
