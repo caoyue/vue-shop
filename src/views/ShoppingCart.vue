@@ -50,13 +50,14 @@
 import { Component, Vue } from 'vue-property-decorator';
 import { State, Mutation } from 'vuex-class';
 import { ShoppingCart } from '@/types/index';
+import types from '@/store/types';
 import _ from '@/utils/index';
 
 @Component
 export default class ShoppingCartView extends Vue {
     @State shoppingCarts!: ShoppingCart[];
-    @Mutation removeCart!: (s: ShoppingCart) => void;
-    @Mutation productChange!: (payload: {
+    @Mutation(types.CART_REMOVE) cartRemove!: (s: ShoppingCart) => void;
+    @Mutation(types.CART_UPDATE) cartUpdate!: (payload: {
         productId: number;
         num: number;
     }) => void;
@@ -65,14 +66,14 @@ export default class ShoppingCartView extends Vue {
         if (s.number < s.product.stock) {
             s.number++;
         }
-        this.productChange({ productId: s.product.id, num: s.number });
+        this.cartUpdate({ productId: s.product.id, num: s.number });
     }
 
     private decrease(s: ShoppingCart) {
         if (s.number > 1) {
             s.number--;
         }
-        this.productChange({ productId: s.product.id, num: s.number });
+        this.cartUpdate({ productId: s.product.id, num: s.number });
     }
 
     private inceaseDisabled(s: ShoppingCart) {
@@ -93,11 +94,11 @@ export default class ShoppingCartView extends Vue {
         if (s.number > s.product.stock) {
             s.number = s.product.stock;
         }
-        this.productChange({ productId: s.product.id, num: s.number });
+        this.cartUpdate({ productId: s.product.id, num: s.number });
     }
 
     private remove(s: ShoppingCart) {
-        this.removeCart(s);
+        this.cartRemove(s);
     }
 
     private checkout() {

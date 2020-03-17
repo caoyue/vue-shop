@@ -1,5 +1,5 @@
 <template>
-    <div id="mini-cart" @click="goCart" v-show="show">
+    <div id="mini-cart" @click="goCart">
         <div>
             <IconFont iconClass="Shoppingcartfinancebusiness" />
             <span>{{ carts.num }}</span>
@@ -25,12 +25,8 @@ export default class MiniCartView extends Vue {
         };
     }
 
-    get show() {
-        return this.$route.name !== 'ShoppingCart';
-    }
-
     goCart() {
-        return this.$router.push('/shoppingcart');
+        return this.$router.push('/shoppingcart').catch(e => e);
     }
 }
 </script>

@@ -1,42 +1,49 @@
 import { State, ShoppingCart, Product } from '@/types/index';
+import types from './types';
 import _ from '@/utils';
 
 export default {
+    /* alert message */
+    [types.ALERT_MESSAGE](state: State, message: string) {
+        state.message = message;
+    },
+    [types.START_LOADING](state: State) {
+        state.loading++;
+    },
+    [types.FINISH_LOADING](state: State) {
+        state.loading--;
+    },
+
     /* user */
-    login(state: State, payload: { username: string; token: string }) {
+    [types.USER_LOGIN](
+        state: State,
+        payload: { username: string; token: string },
+    ) {
         state.user.username = payload.username;
         state.user.token = payload.token;
 
         _.saveToken(state.user);
     },
-    logout(state: State) {
+    [types.USER_LOGOUT](state: State) {
         state.user.username = '';
         state.user.token = '';
 
         _.removeToken();
     },
 
-    /* alert message */
-    alertMessage(state: State, message: string) {
-        state.message = message;
-    },
-    startLoading(state: State) {
-        state.loading++;
-    },
-    finishLoading(state: State) {
-        state.loading--;
-    },
-
     /* product */
-    setProducts(state: State, products: Product[]) {
+    [types.PRODUC_LIST_LOAD](state: State, products: Product[]) {
         state.products = products;
     },
-    setProduct(state: State, product: Product) {
+    [types.PRODUCT_LOAD](state: State, product: Product) {
         state.product = product;
     },
 
     /* shopping cart */
-    productChange(state: State, payload: { productId: number; num: number }) {
+    [types.CART_UPDATE](
+        state: State,
+        payload: { productId: number; num: number },
+    ) {
         const p = state.shoppingCarts.find(
             s => s.product.id === payload.productId,
         );
@@ -44,7 +51,7 @@ export default {
             p.number = payload.num;
         }
     },
-    removeCart(state: State, cart: ShoppingCart) {
+    [types.CART_REMOVE](state: State, cart: ShoppingCart) {
         state.shoppingCarts.splice(
             state.shoppingCarts.findIndex(
                 s => s.product.id === cart.product.id,
@@ -52,7 +59,10 @@ export default {
             1,
         );
     },
-    addToCart(state: State, payload: { product: Product; number: number }) {
+    [types.CART_ADD](
+        state: State,
+        payload: { product: Product; number: number },
+    ) {
         const cart = state.shoppingCarts.find(
             c => c.product.id === payload.product.id,
         );

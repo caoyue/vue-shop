@@ -25,15 +25,17 @@ import { State, Mutation, Action } from 'vuex-class';
 import { Product } from '@/types/index';
 import { Component, Watch } from 'vue-property-decorator';
 import { Route } from 'vue-router';
+import types from '@/store/types';
 
 @Component
 export default class ProductView extends Vue {
     @State product!: Product;
 
-    @Mutation addToCart!: (payload: {
+    @Mutation(types.CART_ADD) cartAdd!: (payload: {
         product: Product;
         number: number;
     }) => void;
+
     @Action getProductById!: (payload: { id: number }) => void;
 
     private num = 1;
@@ -54,7 +56,7 @@ export default class ProductView extends Vue {
     }
 
     private addCart() {
-        this.addToCart({
+        this.cartAdd({
             product: this.product,
             number: this.num,
         });

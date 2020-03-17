@@ -10,8 +10,9 @@
 import { Component, Vue, Watch } from 'vue-property-decorator';
 import { Mutation } from 'vuex-class';
 import { Route } from 'vue-router';
-import NavView from './components/Nav.vue';
-import AlertView from './components/Alert.vue';
+import NavView from '@/components/Nav.vue';
+import AlertView from '@/components/Alert.vue';
+import types from '@/store/types';
 
 @Component({
     components: {
@@ -20,7 +21,8 @@ import AlertView from './components/Alert.vue';
     },
 })
 export default class App extends Vue {
-    @Mutation alertMessage!: (message: string) => void;
+    @Mutation(types.ALERT_MESSAGE) alertMessage!: (message: string) => void;
+
     @Watch('$route', { immediate: true, deep: true })
     onRouteChange(newVal: Route) {
         this.alertMessage('');

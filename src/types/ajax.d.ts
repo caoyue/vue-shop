@@ -9,8 +9,8 @@ declare namespace Ajax {
         // success
         success: boolean;
 
-        // error code
-        code: number;
+        // error message
+        message: string;
 
         // data
         result: T;

@@ -13,11 +13,12 @@
 <script lang="ts">
 import { Vue, Component } from 'vue-property-decorator';
 import { State, Mutation } from 'vuex-class';
+import types from '@/store/types';
 
 @Component
 export default class AlertView extends Vue {
     @State message!: string;
-    @Mutation alertMessage!: (message: string) => void;
+    @Mutation(types.ALERT_MESSAGE) alertMessage!: (message: string) => void;
     private clear() {
         this.alertMessage('');
     }

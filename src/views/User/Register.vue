@@ -39,7 +39,7 @@ export default class LoginView extends Vue {
     @Action register!: (payload: {
         username: string;
         password: string;
-    }) => Promise<void>;
+    }) => Promise<string>;
 
     private username = '';
     private password = '';
@@ -47,13 +47,16 @@ export default class LoginView extends Vue {
     private error = '';
 
     private onRegister() {
+        this.error = '';
         if (this.validate()) {
             this.register({
                 username: this.username,
                 password: this.password,
-            }).then(() => {
+            }).then(err => {
                 if (this.isAuthenticated) {
                     this.$router.replace('/user');
+                } else {
+                    this.error = err;
                 }
             });
         } else {

@@ -1,6 +1,7 @@
 import axios from 'axios';
 import store from '@/store';
 import router from '@/router';
+import types from '@/store/types';
 import _ from '@/utils';
 
 const http = axios.create();
@@ -15,11 +16,11 @@ http.interceptors.request.use(
             config.headers.Authorization = `Bearer${store.state.user.token}`;
         }
 
-        store.commit('startLoading');
+        store.commit(types.START_LOADING);
         return config;
     },
     error => {
-        store.commit('finishLoading');
+        store.commit(types.FINISH_LOADING);
         console.log(error);
         return Promise.reject(error);
     },
@@ -27,11 +28,11 @@ http.interceptors.request.use(
 
 http.interceptors.response.use(
     response => {
-        store.commit('finishLoading');
+        store.commit(types.FINISH_LOADING);
         return response;
     },
     error => {
-        store.commit('finishLoading');
+        store.commit(types.FINISH_LOADING);
 
         if (error.response) {
             switch (error.response.status) {
@@ -44,7 +45,7 @@ http.interceptors.response.use(
                     break;
             }
         } else {
-            store.commit('alertMessage', 'Network Error.');
+            store.commit(types.ALERT_MESSAGE, 'Network Error.');
         }
         console.log(error);
         return Promise.reject(error);

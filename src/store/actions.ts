@@ -2,6 +2,7 @@ import { ActionTree } from 'vuex';
 import { State, User, Product } from '@/types';
 import userApi from '@/api/user';
 import productApi from '@/api/product';
+import types from './types';
 
 const actions: ActionTree<State, State> = {
     /* user */
@@ -15,14 +16,13 @@ const actions: ActionTree<State, State> = {
             .catch(e => e);
 
         if (res && res.success) {
-            commit('login', {
+            commit(types.USER_LOGIN, {
                 username: res.result.username,
                 token: res.result.token,
             });
+            return '';
         } else {
-            const error =
-                res && res.code ? `Code ${res.code}` : 'Network Error.';
-            commit('alertMessage', `Register Error: ${error}`);
+            return res && res.message ? res.message : 'Network Error.';
         }
     },
     async login({ commit }, payload: { username: string; password: string }) {
@@ -32,19 +32,17 @@ const actions: ActionTree<State, State> = {
             .catch(e => e);
 
         if (res && res.success) {
-            commit('login', {
+            commit(types.USER_LOGIN, {
                 username: res.result.username,
                 token: res.result.token,
             });
+            return '';
         } else {
-            const error =
-                res && res.code ? `Code ${res.code}` : 'Network Error.';
-            commit('alertMessage', `Login Error: ${error}`);
+            return res && res.message ? res.message : 'Network Error.';
         }
     },
     async logout({ commit }) {
-        await userApi.logout().catch(e => e);
-        commit('logout');
+        commit(types.USER_LOGOUT);
     },
 
     /* product */
@@ -54,7 +52,7 @@ const actions: ActionTree<State, State> = {
             .then(res => res.data)
             .catch(e => e);
         if (res && res.success) {
-            commit('setProducts', res.result);
+            commit(types.PRODUC_LIST_LOAD, res.result);
         }
     },
     async getProductById({ commit }, payload: { id: number }) {
@@ -63,7 +61,7 @@ const actions: ActionTree<State, State> = {
             .then(res => res.data)
             .catch(e => e);
         if (res && res.success) {
-            commit('setProduct', res.result);
+            commit(types.PRODUCT_LOAD, res.result);
         }
     },
 };

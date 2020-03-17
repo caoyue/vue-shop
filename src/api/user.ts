@@ -13,9 +13,6 @@ const userApi = {
             password,
         });
     },
-    logout() {
-        return http.post('/user/logout');
-    },
 };
 
 export default userApi;
