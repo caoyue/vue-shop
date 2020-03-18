@@ -13,7 +13,7 @@
             <input type="password" name="password" v-model="password" />
         </div>
         <div class="row">
-            <button @click="onLogin">login</button>
+            <button @click="onLogin" :disabled="disabled">login</button>
             <span class="reg">
                 <router-link :to="{ path: '/register' }">Register</router-link>
             </span>
@@ -38,6 +38,7 @@ export default class LoginView extends Vue {
     private username = '';
     private password = '';
     private error = '';
+    private disabled = false;
 
     private created() {
         if (this.user.username) {
@@ -48,6 +49,7 @@ export default class LoginView extends Vue {
     private onLogin() {
         this.error = '';
         if (this.validate()) {
+            this.disabled = true;
             this.login({
                 username: this.username,
                 password: this.password,
@@ -57,6 +59,7 @@ export default class LoginView extends Vue {
                     this.$router.replace({ path: redirect as string });
                 } else {
                     this.error = err;
+                    this.disabled = false;
                 }
             });
         } else {

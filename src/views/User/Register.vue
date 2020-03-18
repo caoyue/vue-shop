@@ -21,7 +21,7 @@
             />
         </div>
         <div class="row">
-            <button @click="onRegister">Register</button>
+            <button @click="onRegister" :disabled="disabled">Register</button>
             <span class="reg">
                 <router-link :to="{ path: '/login' }">Login</router-link>
             </span>
@@ -45,10 +45,12 @@ export default class LoginView extends Vue {
     private password = '';
     private confirmPassword = '';
     private error = '';
+    private disabled = false;
 
     private onRegister() {
         this.error = '';
         if (this.validate()) {
+            this.disabled = true;
             this.register({
                 username: this.username,
                 password: this.password,
@@ -57,6 +59,7 @@ export default class LoginView extends Vue {
                     this.$router.replace('/user');
                 } else {
                     this.error = err;
+                    this.disabled = false;
                 }
             });
         } else {

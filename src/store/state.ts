@@ -5,7 +5,7 @@ const initialUser = _.loadUser();
 const initialNav = _.loadNav();
 
 const state: State = {
-    keepAlive: ['HomeView', 'AboutView'],
+    keepAlive: [],
     user: initialUser,
     loading: 0,
     message: '',

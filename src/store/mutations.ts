@@ -24,6 +24,12 @@ export default {
     [types.FINISH_LOADING](state: State) {
         state.loading--;
     },
+    [types.ALIVE_ADD](state: State, view: string) {
+        _.addToArray(state.keepAlive, view);
+    },
+    [types.ALIVE_REMOVE](state: State, view: string) {
+        _.removeFromArray(state.keepAlive, k => k === view);
+    },
 
     /* user */
     [types.USER_TOKEN]() {

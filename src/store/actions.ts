@@ -58,12 +58,14 @@ const actions: ActionTree<State, State> = {
     },
 
     /* page */
-    async loadPage(_context, payload: { tag: string }) {
+    async loadPage({ commit }, payload: { tag: string }) {
         const res: Ajax.AjaxResponse<Page> = await pageApi
             .get(payload.tag)
             .then(res => res.data)
             .catch(e => e);
         if (res && res.success) {
+            // kee-alive after request success
+            commit(types.ALIVE_ADD, `${payload.tag}View`);
             return res.result;
         } else {
             return {

@@ -17,7 +17,7 @@ export default class AboutView extends Vue {
     private html = '';
 
     created() {
-        this.loadPage({ tag: 'about' }).then(s => {
+        this.loadPage({ tag: 'About' }).then(s => {
             this.html = s.content;
         });
     }

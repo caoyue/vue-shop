@@ -18,7 +18,7 @@ export default class IndexView extends Vue {
     private html = '';
 
     created() {
-        this.loadPage({ tag: 'home' }).then(s => {
+        this.loadPage({ tag: 'Home' }).then(s => {
             this.html = s.content;
         });
     }
