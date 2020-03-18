@@ -3,6 +3,11 @@ export interface User {
     token: string;
 }
 
+export interface Page {
+    tag: string;
+    content: string;
+}
+
 export interface NavMenu {
     title: string;
     path: string;
@@ -23,6 +28,7 @@ export interface ShoppingCart {
 }
 
 export interface State {
+    keepAlive: string[];
     user: User;
     loading: number;
     message: string;

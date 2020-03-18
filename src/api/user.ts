@@ -13,6 +13,9 @@ const userApi = {
             password,
         });
     },
+    profile() {
+        return http.get('/user/profile');
+    },
 };
 
 export default userApi;

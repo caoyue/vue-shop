@@ -2,6 +2,17 @@ import { State, ShoppingCart, Product } from '@/types/index';
 import types from './types';
 import _ from '@/utils';
 
+const aliveComponents = ['ProductListView'];
+const addComponents = (state: State) => {
+    _.addRangeToArray(state.keepAlive, aliveComponents);
+};
+const removeComponents = (state: State) => {
+    state.keepAlive = _.removeRangeFromArray(
+        state.keepAlive,
+        (t: string) => aliveComponents.indexOf(t) < 0,
+    );
+};
+
 export default {
     /* alert message */
     [types.ALERT_MESSAGE](state: State, message: string) {
@@ -15,20 +26,29 @@ export default {
     },
 
     /* user */
+    [types.USER_TOKEN]() {
+        _.loadUser();
+    },
     [types.USER_LOGIN](
         state: State,
         payload: { username: string; token: string },
     ) {
         state.user.username = payload.username;
         state.user.token = payload.token;
-
         _.saveToken(state.user);
+        // keep component alive after login
+        addComponents(state);
     },
     [types.USER_LOGOUT](state: State) {
         state.user.username = '';
         state.user.token = '';
-
         _.removeToken();
+        // if logout, remove cached components
+        removeComponents(state);
+    },
+    [types.USER_PROFILE](state: State, username: string) {
+        state.user.username = username;
+        addComponents(state);
     },
 
     /* product */
@@ -52,11 +72,9 @@ export default {
         }
     },
     [types.CART_REMOVE](state: State, cart: ShoppingCart) {
-        state.shoppingCarts.splice(
-            state.shoppingCarts.findIndex(
-                s => s.product.id === cart.product.id,
-            ),
-            1,
+        _.removeFromArray(
+            state.shoppingCarts,
+            (s: ShoppingCart) => s.product.id == cart.product.id,
         );
     },
     [types.CART_ADD](
@@ -69,7 +87,7 @@ export default {
         if (cart) {
             cart.number += payload.number;
         } else {
-            state.shoppingCarts.push(payload);
+            _.addToArray(state.shoppingCarts, payload);
         }
     },
 };

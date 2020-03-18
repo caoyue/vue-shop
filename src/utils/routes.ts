@@ -9,6 +9,34 @@ const routes = [
         },
     },
     {
+        path: '/products',
+        name: 'ProductList',
+        component: () => import('../views/ProductList.vue'),
+        meta: {
+            title: 'Product List',
+            show: true,
+            needLogin: true,
+        },
+    },
+    {
+        path: '/product/:id',
+        name: 'Product',
+        component: () => import('../views/Product.vue'),
+        meta: {
+            needLogin: true,
+        },
+    },
+    {
+        path: '/user',
+        name: 'User',
+        component: () => import('../views/User/Profile.vue'),
+        meta: {
+            title: 'User Profile',
+            needLogin: true,
+            show: true,
+        },
+    },
+    {
         path: '/register',
         name: 'Register',
         component: () => import('../views/User/Register.vue'),
@@ -34,25 +62,6 @@ const routes = [
         },
     },
     {
-        path: '/products',
-        name: 'ProductList',
-        component: () => import('../views/ProductList.vue'),
-        meta: {
-            title: 'Product List',
-            show: true,
-        },
-    },
-    {
-        path: '/user',
-        name: 'User',
-        component: () => import('../views/User/Profile.vue'),
-        meta: {
-            title: 'User Profile',
-            needLogin: true,
-            show: true,
-        },
-    },
-    {
         path: '/about',
         name: 'About',
         component: () => import('../views/About.vue'),
@@ -60,13 +69,6 @@ const routes = [
             title: 'About',
             show: true,
         },
-    },
-
-    {
-        path: '/product/:id',
-        name: 'Product',
-        component: () => import('../views/Product.vue'),
-        meta: {},
     },
     {
         path: '/shoppingcart',

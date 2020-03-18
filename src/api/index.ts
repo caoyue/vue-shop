@@ -13,7 +13,7 @@ http.interceptors.request.use(
 
         // if token exists, add to request
         if (store.state.user && store.state.user.token) {
-            config.headers.Authorization = `Bearer${store.state.user.token}`;
+            config.headers.Authorization = `Bearer ${store.state.user.token}`;
         }
 
         store.commit(types.START_LOADING);

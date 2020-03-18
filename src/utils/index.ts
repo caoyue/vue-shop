@@ -54,6 +54,21 @@ const utils = {
                 return nav;
             });
     },
+    addToArray<T>(tArray: T[], item: T) {
+        tArray.push(item);
+    },
+    addRangeToArray<T>(tArray: T[], items: T[]) {
+        tArray.push(...items);
+    },
+    removeFromArray<T>(tArray: T[], condition: (t: T) => boolean) {
+        tArray.splice(
+            tArray.findIndex(t => condition(t)),
+            1,
+        );
+    },
+    removeRangeFromArray<T>(tArray: T[], condition: (t: T) => boolean): T[] {
+        return tArray.filter(t => condition(t));
+    },
 };
 
 export default utils;

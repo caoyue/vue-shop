@@ -1,8 +1,9 @@
 import { ActionTree } from 'vuex';
-import { State, User, Product } from '@/types';
+import { State, User, Product, Page } from '@/types';
 import userApi from '@/api/user';
 import productApi from '@/api/product';
 import types from './types';
+import pageApi from '@/api/page';
 
 const actions: ActionTree<State, State> = {
     /* user */
@@ -43,6 +44,33 @@ const actions: ActionTree<State, State> = {
     },
     async logout({ commit }) {
         commit(types.USER_LOGOUT);
+    },
+    async profile({ commit }) {
+        const res: Ajax.AjaxResponse<User> = await userApi
+            .profile()
+            .then(res => res.data)
+            .catch(e => e);
+        if (res && res.success) {
+            commit(types.USER_PROFILE, res.result.username);
+        } else {
+            commit(types.USER_LOGOUT);
+        }
+    },
+
+    /* page */
+    async loadPage(_context, payload: { tag: string }) {
+        const res: Ajax.AjaxResponse<Page> = await pageApi
+            .get(payload.tag)
+            .then(res => res.data)
+            .catch(e => e);
+        if (res && res.success) {
+            return res.result;
+        } else {
+            return {
+                tag: payload.tag,
+                content: '',
+            };
+        }
     },
 
     /* product */

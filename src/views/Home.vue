@@ -9,7 +9,7 @@
 import Index from '@/components/Index.vue';
 
 export default {
-    name: 'Home',
+    name: 'HomeView',
     components: {
         Index,
     },
