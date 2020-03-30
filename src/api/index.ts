@@ -21,7 +21,6 @@ http.interceptors.request.use(
     },
     error => {
         store.commit(types.FINISH_LOADING);
-        console.log(error);
         return Promise.reject(error);
     },
 );
@@ -47,7 +46,6 @@ http.interceptors.response.use(
         } else {
             store.commit(types.ALERT_MESSAGE, 'Network Error.');
         }
-        console.log(error);
         return Promise.reject(error);
     },
 );

@@ -6,15 +6,15 @@ a simple shop app for studying vue.js
 
 -   typescript
 -   vue-cli
--   vue-router
 -   vuex
 -   vuex-class
+-   less
 -   axios
 -   JWT based authentication
 
 ## run
 
-run `VueShopServer` first, then
+run [VueShopServer](https://github.com/caoyue/VueShopServer) first, then
 
 ```
 yarn install
