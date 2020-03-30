@@ -4,6 +4,10 @@
 
 a simple shop app for studying vue.js
 
+## demo
+
+[vue-shop](https://vue.caoyue.me/)
+
 ## tools
 
 -   typescript

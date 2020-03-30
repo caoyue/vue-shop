@@ -1,6 +1,8 @@
 language: node_js
 node_js:
     - node
+before_install:
+    - echo "VUE_APP_BASEAPI='${VUE_APP_BASEAPI}'" > .env.production
 install:
     - yarn install
 script:
