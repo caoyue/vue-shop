@@ -1,5 +1,7 @@
 # vue-shop
 
+[![Build Status](https://travis-ci.com/caoyue/vue-shop.svg?branch=master)](https://travis-ci.com/caoyue/vue-shop)
+
 a simple shop app for studying vue.js
 
 ## tools

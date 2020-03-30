@@ -6,11 +6,11 @@ install:
 script:
     - yarn build
 after_success:
-    - tar -zcvf dist vue-shop-${TRAVIS_BUILD_NUMBER}.zip
+    - tar -zcvf vue-shop-${TRAVIS_TAG}.zip dist
 deploy:
     provider: releases
     api_key: ${GITHUB_OAUTH_TOKEN}
-    file: vue-shop-${TRAVIS_BUILD_NUMBER}.zip
+    file: vue-shop-${TRAVIS_TAG}.zip
     skip_cleanup: true
     on:
         tags: true
