@@ -49,8 +49,9 @@ router.beforeEach((to, from, next) => {
                 redirect: to.fullPath,
             },
         });
+    } else {
+        next();
     }
-    next();
 });
 
 Vue.config.productionTip = false;
